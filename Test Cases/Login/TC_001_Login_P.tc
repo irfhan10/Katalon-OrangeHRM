@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>User successfully to login</description>
+   <name>TC_001_Login_P</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>043a4814-7098-4a63-a31e-4ef439af6f7e</testCaseGuid>
+   <variable>
+      <defaultValue>findTestData('TestDataLogin')</defaultValue>
+      <description></description>
+      <id>59506c1d-d006-4dbe-8c7a-16ecfb65dabe</id>
+      <masked>false</masked>
+      <name>dashboard_link</name>
+   </variable>
+</TestCaseEntity>

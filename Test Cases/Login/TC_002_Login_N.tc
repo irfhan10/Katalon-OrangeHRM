@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>User can't login - Invalid Credentials - Incorrect Password</description>
+   <name>TC_002_Login_N</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>07199a41-13d0-451c-8914-bd52e14802cb</testCaseGuid>
+</TestCaseEntity>
