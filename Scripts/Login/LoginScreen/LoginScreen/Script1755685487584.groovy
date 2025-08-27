@@ -39,7 +39,7 @@ WebUI.verifyElementVisible(findTestObject('Login/button_Login'))
 
 WebUI.verifyElementVisible(findTestObject('Login/forgotpass_link'))
 
-WebUI.delay(5)
+WebUI.delay(3)
 
 WebUI.click(findTestObject('Login/input_Username_username'))
 
@@ -53,5 +53,5 @@ WebUI.takeFullPageScreenshot()
 
 WebUI.click(findTestObject('Login/button_Login'))
 
-WebUI.delay(5)
+WebUI.delay(3)
 

@@ -6,6 +6,18 @@
    <comment></comment>
    <recordOption>OTHER</recordOption>
    <testCaseGuid>f4de969d-e787-4bc1-8339-fffe7855bcd7</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>aa8d7daf-692e-4fdb-a880-bf3c8d22e337</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>441191f9-5db3-416d-8f33-a85c6cf5d1a7</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>findTestData('TestDataLogin')</defaultValue>
       <description></description>

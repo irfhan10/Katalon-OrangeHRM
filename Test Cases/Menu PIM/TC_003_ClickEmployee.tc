@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
-   <name>Hapus User</name>
+   <description>Click Data Table</description>
+   <name>TC_003_ClickEmployee</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>22879ce6-ba23-45cf-99cf-2afbfdf06f41</testCaseGuid>
+   <testCaseGuid>431cc45b-9eb8-484b-8f4d-48838d2c7f07</testCaseGuid>
 </TestCaseEntity>

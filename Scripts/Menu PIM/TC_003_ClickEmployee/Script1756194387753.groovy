@@ -17,3 +17,30 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen'), [('username') : findTestData('TestDataLogin').getValue(
+            'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
+
+dashboard_link = WebUI.getUrl()
+
+WebUI.verifyMatch(dashboard_link, findTestData('TestDataLogin').getValue('url', 2), false)
+
+WebUI.delay(3)
+
+WebUI.takeFullPageScreenshot()
+
+WebUI.delay(3)
+
+WebUI.click(findTestObject('Menu PIM/click_menu_PIM'))
+
+WebUI.delay(3)
+
+String strEmpId = '0367'
+WebUI.click(findTestObject('Menu PIM/EmpId_Object', [('EmpId'):strEmpId]))
+
+WebUI.delay(5)
+
+WebUI.takeFullPageScreenshot()
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()

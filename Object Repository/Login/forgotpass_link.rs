@@ -6,24 +6,28 @@
    <elementGuidId>3befb6b5-c4a3-4743-b038-704734f54718</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>p.oxd-text.oxd-text--p.orangehrm-login-forgot-header</value>
-      </entry>
-      <entry>
          <key>XPATH</key>
          <value>//p[(text() = 'Forgot your password? ' or . = 'Forgot your password? ')]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//p[(text() = 'Forgot Your Password? ' or . = 'Forgot Your Password? ')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>p.oxd-text.oxd-text--p.orangehrm-login-forgot-header</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
       <value>p</value>
-      <webElementGuid>e91dc2b4-8bda-4096-b8c7-e8f8eb0b2a28</webElementGuid>
+      <webElementGuid>fe8bc879-31de-4f47-a694-7abeee6c61b2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,15 +35,15 @@
       <name>class</name>
       <type>Main</type>
       <value>oxd-text oxd-text--p orangehrm-login-forgot-header</value>
-      <webElementGuid>e8c7db0b-b2f8-4334-abe6-2ac79c9ea203</webElementGuid>
+      <webElementGuid>61ac8f36-f490-453e-8334-05a41afaf253</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Forgot your password? </value>
-      <webElementGuid>8034de16-db98-4266-9b5a-c5b3446f8932</webElementGuid>
+      <value>Forgot Your Password? </value>
+      <webElementGuid>9adab9fd-6507-45ee-9007-ae70aaca0ff3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +51,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;app&quot;)/div[@class=&quot;orangehrm-login-layout&quot;]/div[@class=&quot;orangehrm-login-layout-blob&quot;]/div[@class=&quot;orangehrm-login-container&quot;]/div[@class=&quot;orangehrm-login-slot-wrapper&quot;]/div[@class=&quot;orangehrm-login-slot&quot;]/div[@class=&quot;orangehrm-login-form&quot;]/form[@class=&quot;oxd-form&quot;]/div[@class=&quot;orangehrm-login-forgot&quot;]/p[@class=&quot;oxd-text oxd-text--p orangehrm-login-forgot-header&quot;]</value>
-      <webElementGuid>e7676636-1c89-4e85-8707-c2f739a0fda5</webElementGuid>
+      <webElementGuid>1323b07e-79cf-4400-8a12-431e186a2836</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -55,7 +59,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='app']/div/div/div/div/div[2]/div[2]/form/div[4]/p</value>
-      <webElementGuid>547eb558-ef72-4cc5-8514-7d44f15ede39</webElementGuid>
+      <webElementGuid>a3524a6e-4818-45c8-a3d1-84ea7791dd5d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -63,7 +67,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::p[1]</value>
-      <webElementGuid>5241b212-048e-4abb-8e76-2a3f5b6ef474</webElementGuid>
+      <webElementGuid>168b1819-0272-40bd-9af5-afce40ec26be</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -71,7 +75,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM, Inc'])[1]/preceding::p[2]</value>
-      <webElementGuid>c777e0e9-861b-4bae-a02a-dc03a38d9d90</webElementGuid>
+      <webElementGuid>43b219af-de5b-48f1-a602-16592349360a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +83,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Forgot your password?']/parent::*</value>
-      <webElementGuid>fc6cbeb0-6375-45f9-b410-83b2aad304e5</webElementGuid>
+      <webElementGuid>771f6053-7af9-4c8d-a694-4b109af4176a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,14 +91,14 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[4]/p</value>
-      <webElementGuid>27eeb322-a43f-4538-bee2-90f9ff934680</webElementGuid>
+      <webElementGuid>4ac4c9d2-beb0-4612-a472-14ef235f8013</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//p[(text() = 'Forgot your password? ' or . = 'Forgot your password? ')]</value>
-      <webElementGuid>fb56c781-86e2-4eb9-a6a6-4ea667c59536</webElementGuid>
+      <value>//p[(text() = 'Forgot Your Password? ' or . = 'Forgot Your Password? ')]</value>
+      <webElementGuid>c9b49c2e-7e65-4b0e-8c10-eb541ffaafa2</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

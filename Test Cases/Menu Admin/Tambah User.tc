@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description></description>
-   <name>Tambah User</name>
-   <tag></tag>
-   <comment></comment>
-   <recordOption>OTHER</recordOption>
-   <testCaseGuid>af74b399-28f6-42f9-8cf3-f4734d23ec7d</testCaseGuid>
-</TestCaseEntity>
