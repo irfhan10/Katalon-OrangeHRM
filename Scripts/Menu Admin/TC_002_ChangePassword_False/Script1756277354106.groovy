@@ -20,11 +20,53 @@ import org.openqa.selenium.Keys as Keys
 WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen'), [('username') : findTestData('TestDataLogin').getValue(
             'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
 
-dashboard_link = WebUI.getUrl()
+WebUI.delay(3)
 
-WebUI.verifyMatch(dashboard_link, findTestData('TestDataLogin').getValue('url', 2), false)
+WebUI.click(findTestObject('Menu Admin/menu_Admin'))
 
 WebUI.delay(3)
+
+WebUI.click(findTestObject('Menu Admin/input_Username'))
+
+WebUI.setText(findTestObject('Menu Admin/input_Username'), 'hatzz')
+
+WebUI.delay(3)
+
+WebUI.click(findTestObject('Menu Admin/button_Search'))
+
+WebUI.delay(3)
+
+WebUI.click(findTestObject('Menu Admin/button_Edit'))
+
+WebUI.delay(3)
+
+notchecked = WebUI.verifyElementNotChecked(findTestObject('Menu Admin/checkbox_Yes'), 0)
+
+if (notchecked == false) {
+    WebUI.click(findTestObject('Menu Admin/checkbox_Yes'))
+
+    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Password'))
+
+    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Confirm Password'))
+
+    WebUI.click(findTestObject('Menu Admin/input_Password'))
+
+    WebUI.setText(findTestObject('Menu Admin/input_Password'), 'admin123')
+
+    WebUI.click(findTestObject('Menu Admin/input_Confirm Password'))
+
+    WebUI.setText(findTestObject('Menu Admin/input_Confirm Password'), 'admin123')
+
+    WebUI.delay(3)
+
+    WebUI.click(findTestObject('Menu Admin/button_Save'))
+
+    WebUI.delay(3)
+} else {
+    WebUI.click(findTestObject('Menu Admin/button_Save'))
+
+    WebUI.delay(10)
+}
 
 WebUI.takeFullPageScreenshot()
 
