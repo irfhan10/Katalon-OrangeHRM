@@ -67,7 +67,7 @@ WebUI.setText(findTestObject('Menu PIM/input_Employee Id'), randomEmployeeId)
 
 WebUI.delay(3)
 
-String filePath = RunConfiguration.getProjectDir() + '/Data Files/gambar1.jpg'
+String filePath = RunConfiguration.getProjectDir() + '/Test Data/gambar1.jpg'
 
 WebUI.uploadFile(findTestObject('Menu PIM/button_AddEmployeeProfile'), filePath)
 

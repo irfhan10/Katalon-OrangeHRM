@@ -28,7 +28,7 @@ WebUI.delay(3)
 
 WebUI.click(findTestObject('Menu Admin/input_Username'))
 
-WebUI.setText(findTestObject('Menu Admin/input_Username'), 'hatzz')
+WebUI.setText(findTestObject('Menu Admin/input_Username'), 'Testing')
 
 WebUI.delay(3)
 

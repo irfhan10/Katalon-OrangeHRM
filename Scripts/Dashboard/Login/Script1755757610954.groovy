@@ -22,7 +22,7 @@ import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
 
 
-akun = CustomKeywords.'test.CreateFileAccountName.readFileAccount'('Akbar Shaikh')
+akun = CustomKeywords.'dashboard_getnamaakun.CreateFileAccountName.readFileAccount'('Akbar Shaikh')
 
 WebUI.openBrowser(GlobalVariable.url)
 

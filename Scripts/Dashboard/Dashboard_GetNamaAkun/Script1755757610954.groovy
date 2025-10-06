@@ -39,6 +39,6 @@ WebUI.delay(5)
 
 accountname = WebUI.getText(findTestObject('Dashboard/accountname'))
 
-CustomKeywords.'test.CreateFileAccountName.generatedFileAccount'(accountname)
+CustomKeywords.'dashboard_getnamaakun.CreateFileAccountName.generatedFileAccount'(accountname)
 
 WebUI.closeBrowser()
