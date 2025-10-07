@@ -18,38 +18,42 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
+import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.configuration.RunConfiguration
 import internal.GlobalVariable
 import org.apache.commons.io.FileUtils as FileUtils
 import java.io.File as File
+import java.text.SimpleDateFormat
 
 public class CreateFileAccountName {
-
+	
 	@Keyword
 	def generatedFileAccount(String nama) {
 		try {
-			File myObj = new File("C://Katalon Studio//OrangeHRM//NamaUser//"+nama+".txt");
-			if (myObj.createNewFile()) {
-				FileWriter myWriter = new FileWriter("C://Katalon Studio//OrangeHRM//NamaUser//"+nama+".txt");
-				myWriter.write(nama);
-				myWriter.close();
-			} else {
-				System.out.println("File already exist.");
+			// Buat folder otomatis
+			String folderPath = RunConfiguration.getProjectDir() + "/GetNamaUser"
+			File folder = new File(folderPath)
+			if (!folder.exists()) {
+				folder.mkdirs()
+				KeywordUtil.logInfo("Folder 'GetNamaUser' dibuat di: " + folderPath)
 			}
-		} catch (IOException e) {
-			System.out.println("An error occured.");
-			e.printStackTrace();
-		}
-	}
 
-	@Keyword
-	def readFileAccount(String nama) {
-		try {
-			File myObj = new File("C://Katalon Studio//OrangeHRM//NamaUser//"+nama+".txt");
-			String data = FileUtils.readFileToString(myObj)
+			// Buat nama file dengan timestamp
+			String timestamp = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss").format(new Date())
+			String fileName = "${nama}_${timestamp}.txt"
+			File file = new File(folderPath + "/" + fileName)
+
+			// Tulis nama ke file
+			FileWriter writer = new FileWriter(file)
+			writer.write(nama)
+			writer.close()
+
+			KeywordUtil.logInfo("File berhasil dibuat: " + file.getAbsolutePath())
 		} catch (IOException e) {
-			System.out.println("An error occured.");
-			e.printStackTrace();
+			KeywordUtil.markFailed("Gagal membuat file: " + e.message)
 		}
 	}
+	
+	
 }
+

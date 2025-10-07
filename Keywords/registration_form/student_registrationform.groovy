@@ -35,22 +35,6 @@ import com.kms.katalon.core.configuration.RunConfiguration
 
 public class student_registrationform {
 
-	//	@Keyword
-	//	def InputFirstName(String firstname) {
-	//		try {
-	//			// Mengetik teks pada field
-	//			WebUI.sendKeys(findTestObject('Registration/FirstName'), firstname, FailureHandling.STOP_ON_FAILURE)
-	//			// Menampilkan log informasi di console (berhasil)
-	//			KeywordUtil.logInfo("Input First Name : " + firstname)
-	//			KeywordUtil.markPassed("First Name has been inputted")
-	//			// Menampilkan log informasi di console (gagal/error)
-	//		} catch (WebElementNotFoundException e) {
-	//			KeywordUtil.markFailed("Element not found")
-	//		} catch (Exception e) {
-	//			KeywordUtil.markFailedAndStop("Fail to inputted on element")
-	//		}
-	//	}
-
 
 	@Keyword
 	def InputField(String value, String objectPath, String fieldName = "Field") {

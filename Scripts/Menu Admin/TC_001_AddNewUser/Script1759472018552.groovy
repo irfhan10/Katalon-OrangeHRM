@@ -43,7 +43,7 @@ WebUI.waitForElementVisible(optionrole, 5)
 
 WebUI.click(optionrole)
 
-WebUI.delay(1)
+WebUI.delay(3)
 
 // Pilih status
 WebUI.click(findTestObject('Menu Admin/div_Status'))
@@ -59,17 +59,25 @@ WebUI.click(optionstatus)
 
 WebUI.delay(1)
 
-WebUI.setText(findTestObject('Page_OrangeHRM/input_EmployeeName'), 'Amelia')
+WebUI.setText(findTestObject('Menu Admin/input_EmployeeName'), 'Amelia')
 
 // Tunggu sampai suggestion muncul
-TestObject suggestion = new TestObject().addProperty("xpath", ConditionType.EQUALS, "//div[@role='listbox']//span[contains(text(),'Amelia')]")
+TestObject suggestion = new TestObject().addProperty('xpath', ConditionType.EQUALS, '//div[@role=\'listbox\']//span[contains(text(),\'Amelia\')]')
 
 WebUI.waitForElementVisible(suggestion, 5)
 
 // Klik langsung pada hasil suggestion
 WebUI.click(suggestion)
 
-WebUI.delay(1)
+WebUI.delay(3)
 
-WebUI.setText(findTestObject('Page_OrangeHRM/input_Username'), 'TestingHRM')
+WebUI.click(findTestObject('Menu Admin/input_Username'))
+
+WebUI.setText(findTestObject('Menu Admin/input_Username'), 'TestingHRM')
+
+WebUI.delay(3)
+
+WebUI.verifyElementPresent(findTestObject('Menu Admin/input_Password'), 3)
+
+WebUI.verifyElementText(findTestObject('Menu Admin/input_Password'), '')
 

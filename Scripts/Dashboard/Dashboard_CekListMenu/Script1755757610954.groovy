@@ -20,10 +20,49 @@ import org.openqa.selenium.By as By
 import org.openqa.selenium.WebDriver as WebDriver
 import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import com.kms.katalon.core.util.KeywordUtil
 
 WebUI.openBrowser(GlobalVariable.url)
 
 WebUI.maximizeWindow()
+
+try {
+	// Assertion Halaman Login
+	if (WebUI.verifyTextPresent('Login', true, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed("Halaman login menampilkan teks 'Login'")
+	} else {
+		KeywordUtil.markFailed("Teks 'Login' tidak ditemukan")
+	}
+
+	if (WebUI.verifyElementPresent(findTestObject('Login/input_Username_username'), 3, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed("Field Username tampil dihalaman login")
+	} else {
+		KeywordUtil.markFailed("Field Username tidak ditemukan")
+	}
+
+	if (WebUI.verifyElementPresent(findTestObject('Login/input_Password_password'), 3, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed("Field Password tampil dihalaman login")
+	} else {
+		KeywordUtil.markFailed("Field Password tidak ditemukan")
+	}
+
+	if (WebUI.verifyElementPresent(findTestObject('Login/button_Login'), 3, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed("Button login tampil dihalaman login")
+	} else {
+		KeywordUtil.markFailed("Button login tidak ditemukan")
+	}
+
+	if (WebUI.verifyElementPresent(findTestObject('Login/password_label'), 3, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed("Label Forgot Your Password tampil dihalaman login")
+	} else {
+		KeywordUtil.markFailed("Label Forgot Your Password tidak ditemukan")
+	}
+
+} catch (Exception e) {
+    KeywordUtil.markFailed("Terjadi error saat verifikasi halaman login: " + e.message)
+}
+
+WebUI.delay(5)
 
 WebUI.click(findTestObject('Login/input_Username_username'))
 
@@ -37,19 +76,54 @@ WebUI.click(findTestObject('Login/button_Login'))
 
 WebUI.delay(5)
 
+try {
+	// Assertion Halaman Dashboard
+	if (WebUI.verifyTextPresent('Dashboard', true, FailureHandling.OPTIONAL) ) {
+		KeywordUtil.markPassed("Halaman dashboard menampilkan teks 'Dashboard'")
+	} else {
+		KeywordUtil.markFailed("Teks 'Dashboard' tidak ditemukan")
+	}
+} catch (Exception e) {
+	KeywordUtil.markFailed("Terjadi error saat verifikasi halaman dashboard: " + e.message)
+}
+
 WebDriver driver = DriverFactory.getWebDriver()
 
+// Ambil elemen menu di UI
 List<WebElement> menus = driver.findElements(By.xpath('//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'))
 
-WebUI.verifyEqual(menus.size(), '12')
+// Verifikasi jumlah menu (menggunakan int)
+WebUI.verifyEqual(menus.size(), 12)
 
-expected = [findTestData('TestDataMenu').getValue('Menu', 1), findTestData('TestDataMenu').getValue('Menu', 2), findTestData('TestDataMenu').getValue('Menu', 3), 
-			findTestData('TestDataMenu').getValue('Menu', 4), findTestData('TestDataMenu').getValue('Menu', 5), findTestData('TestDataMenu').getValue('Menu', 6), 
-			findTestData('TestDataMenu').getValue('Menu', 7), findTestData('TestDataMenu').getValue('Menu', 8), findTestData('TestDataMenu').getValue('Menu', 9), 
-			findTestData('TestDataMenu').getValue('Menu', 10), findTestData('TestDataMenu').getValue('Menu', 11), findTestData('TestDataMenu').getValue('Menu', 12)]
+// Ambil data expected dari Test Data
+List<String> expected = []
+int totalRows = findTestData('TestDataMenu').getRowNumbers()
+for (int i = 1; i <= totalRows; i++) {
+	expected.add(findTestData('TestDataMenu').getValue('Menu', i))
+}
+KeywordUtil.logInfo("Expected menu: " + expected)
+
+// Loop perbandingan UI vs Test Data
+boolean allPassed = true
 
 for (int i = 0; i < menus.size(); i++) {
-	WebUI.verifyEqual(menus.get(i).getText(), expected[i])
+    String actualText = menus.get(i).getText().trim()
+    String expectedText = expected[i].trim()
+	
+	if (actualText.equals(expectedText)) {
+		KeywordUtil.logInfo("Menu ke-" + (i+1) + " sesuai: " + actualText)
+	} else {
+		KeywordUtil.markFailed("Menu ke-" + (i+1) + " Tidak sesuai! " + "Ditemukan: '" + actualText + "', " + "seharusnya: '" + expectedText + "'")
+		allPassed = false
+	}
+}
+
+// Setelah loop selesai
+if (allPassed) {
+    KeywordUtil.markPassed("Semua menu sesuai dengan test data!")
+} else {
+    KeywordUtil.markWarning("Ada menu yang tidak sesuai dengan test data!")
 }
 
 WebUI.closeBrowser()
+
