@@ -16,13 +16,65 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
-WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen'), [('username') : findTestData('TestDataLogin').getValue(
-            'Username', 3), ('password') : findTestData('TestDataLogin').getValue('Password', 3)], FailureHandling.STOP_ON_FAILURE)
+//WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
+//            'Username', 3), ('password') : findTestData('TestDataLogin').getValue('Password', 3)], FailureHandling.STOP_ON_FAILURE)
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin')
+        , ('password') : findTestData('TestDataLogin')], FailureHandling.STOP_ON_FAILURE)
 
-WebUI.verifyElementPresent(findTestObject('Login/message_error_invalid_credentials'), 10)
+// Input username & password
+try {
+    username = findTestData('TestDataLogin').getValue('Username', 3)
 
-WebUI.verifyElementText(findTestObject('Login/message_error_invalid_credentials'), findTestData('TestDataLogin').getValue('MessageError', 1))
+    if ((username != null) && (username.trim() != '')) {
+        WebUI.click(findTestObject('Login/input_Username_username'))
+
+        WebUI.setText(findTestObject('Login/input_Username_username'), username)
+
+        KeywordUtil.markPassed('Berhasil input Username')
+    } else {
+        KeywordUtil.markFailed('Gagal input Username')
+    }
+    
+    password = findTestData('TestDataLogin').getValue('Password', 3)
+
+    if ((password != null) && (password.trim() != '')) {
+        WebUI.click(findTestObject('Login/input_Password_password'))
+
+        WebUI.setText(findTestObject('Login/input_Password_password'), password)
+
+        KeywordUtil.markPassed('Berhasil input Password')
+    } else {
+        KeywordUtil.markFailed('Gagal input Password')
+    }
+}
+catch (Exception e) {
+    KeywordUtil.markFailed('Terjadi error saat login: ' + e.message)
+} 
+
+WebUI.click(findTestObject('Login/button_Login'))
+
+WebUI.delay(3)
+
+// Verifikasi pesan error
+try {
+    if (WebUI.verifyElementPresent(findTestObject('Login/message_error_invalid_credentials'), 10)) {
+        KeywordUtil.markPassed('Berhasil menampilkan pesan error \'Invalid credentials\'.')
+    } else {
+        KeywordUtil.markFailed('Pesan error \'Invalid credentials\' tidak tampil.')
+    }
+    
+    if (WebUI.verifyElementText(findTestObject('Login/message_error_invalid_credentials'), findTestData('TestDataLogin').getValue(
+            'MessageError', 1))) {
+        KeywordUtil.markPassed('Pesan error sesuai dengan test data.')
+    } else {
+        KeywordUtil.markFailed('Pesan error tidak sesuai.')
+    }
+}
+catch (Exception e) {
+    KeywordUtil.markFailed('Terjadi error saat verifikasi: ' + e.message)
+} 
 
 WebUI.delay(3)
 

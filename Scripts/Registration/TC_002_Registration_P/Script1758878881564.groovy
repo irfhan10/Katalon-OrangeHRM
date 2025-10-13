@@ -22,34 +22,34 @@ WebUI.callTestCase(findTestCase('Registration/RegistrationScreen/RegistrationScr
 
 WebUI.delay(3)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(first_name, 'Registration/FirstName')
+CustomKeywords.'registration.student_registrationform.InputField'(first_name, 'Registration/FirstName')
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(last_name, 'Registration/LastName')
+CustomKeywords.'registration.student_registrationform.InputField'(last_name, 'Registration/LastName')
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(email_user, 'Registration/UserEmail')
+CustomKeywords.'registration.student_registrationform.InputField'(email_user, 'Registration/UserEmail')
 
-CustomKeywords.'registration_form.student_registrationform.SelectGender'(gender_user)
+CustomKeywords.'registration.student_registrationform.SelectGender'(gender_user)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(mobile_user, 'Registration/UserNumber')
+CustomKeywords.'registration.student_registrationform.InputField'(mobile_user, 'Registration/UserNumber')
 
-//CustomKeywords.'registration_form.student_registrationform.setDate'(dateofBirth, 'Registration/DateofBirth', 'dd MMM yyyy')
+//CustomKeywords.'registration.student_registrationform.setDate'(dateofBirth, 'Registration/DateofBirth', 'dd MMM yyyy')
 WebUI.click(findTestObject('Registration/Subjects'))
 
-CustomKeywords.'registration_form.student_registrationform.selectSubjects'(subjects_user, 'Registration/Subjects')
+CustomKeywords.'registration.student_registrationform.selectSubjects'(subjects_user, 'Registration/Subjects')
 
-CustomKeywords.'registration_form.student_registrationform.selectHobby'(hobbies_user)
+CustomKeywords.'registration.student_registrationform.selectHobby'(hobbies_user)
 
-CustomKeywords.'registration_form.student_registrationform.uploadFile'(findTestObject('Registration/UploadPicture'), picture_user)
+CustomKeywords.'registration.student_registrationform.uploadFile'(findTestObject('Registration/UploadPicture'), picture_user)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(address_user, 'Registration/CurrentAddress')
+CustomKeywords.'registration.student_registrationform.InputField'(address_user, 'Registration/CurrentAddress')
 
-CustomKeywords.'registration_form.student_registrationform.selectDropdown'(state_user, 'Registration/State')
+CustomKeywords.'registration.student_registrationform.selectDropdown'(state_user, 'Registration/State')
 
-CustomKeywords.'registration_form.student_registrationform.selectDropdown'(city_user, 'Registration/City')
+CustomKeywords.'registration.student_registrationform.selectDropdown'(city_user, 'Registration/City')
 
 WebUI.delay(3)
 
-CustomKeywords.'registration_form.student_registrationform.takeScreenshotWithTimestamp'()
+CustomKeywords.'registration.student_registrationform.takeScreenshotWithTimestamp'()
 
 WebUI.click(findTestObject('Registration/button_Submit'))
 
@@ -57,7 +57,7 @@ WebUI.verifyTextPresent('Thanks for submitting the form', true)
 
 WebUI.delay(3)
 
-CustomKeywords.'registration_form.student_registrationform.takeScreenshotWithTimestamp'()
+CustomKeywords.'registration.student_registrationform.takeScreenshotWithTimestamp'()
 
 WebUI.click(findTestObject('Registration/button_closeModal'))
 

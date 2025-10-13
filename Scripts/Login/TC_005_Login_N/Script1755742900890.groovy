@@ -16,14 +16,50 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
-WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen'), [('username') : findTestData('TestDataLogin').getValue(
-            'Username', 5), ('password') : findTestData('TestDataLogin').getValue('Password', 5)], FailureHandling.STOP_ON_FAILURE)
+//WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
+//            'Username', 5), ('password') : findTestData('TestDataLogin').getValue('Password', 5)], FailureHandling.STOP_ON_FAILURE)
 
-WebUI.verifyElementPresent(findTestObject('Login/span_Username_required'), 10)
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin'), ('password') : findTestData('TestDataLogin')],
+	FailureHandling.STOP_ON_FAILURE)
 
-WebUI.verifyElementText(findTestObject('Login/span_Username_required'), findTestData('TestDataLogin').getValue('MessageError', 
-        2))
+// Input password
+try {
+	password = findTestData('TestDataLogin').getValue('Password', 5)
+	if (password != null && password.trim() != '') {
+		WebUI.click(findTestObject('Login/input_Password_password'))
+		WebUI.setText(findTestObject('Login/input_Password_password'), password)
+		KeywordUtil.markPassed("Berhasil input Password")
+	} else {
+		KeywordUtil.markFailed("Gagal input Password")
+	}
+
+} catch (Exception e) {
+	KeywordUtil.markFailed("Terjadi error saat login: " + e.message)
+}
+
+WebUI.click(findTestObject('Login/button_Login'))
+
+WebUI.delay(3)
+
+// Verifikasi alert required
+try { 
+	if (WebUI.verifyElementPresent(findTestObject('Login/span_TextRequired'), 10)) {
+		KeywordUtil.markPassed("Berhasil menampilkan alert error 'Required'.")
+	} else {
+		KeywordUtil.markFailed("Alert error 'Required' tidak tampil.")
+	}
+
+	if (WebUI.verifyElementText(findTestObject('Login/span_TextRequired'), findTestData('TestDataLogin').getValue('MessageError', 2))) {
+		KeywordUtil.markPassed("Alert error sesuai dengan test data.")
+	} else {
+		KeywordUtil.markFailed("Alert error tidak sesuai dengan test data.")
+	}
+
+} catch (Exception e) {
+	KeywordUtil.markFailed("Terjadi error saat verifikasi: " + e.message)
+}
 
 WebUI.delay(3)
 

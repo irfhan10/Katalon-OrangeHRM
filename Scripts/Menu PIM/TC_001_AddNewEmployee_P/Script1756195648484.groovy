@@ -19,7 +19,7 @@ import org.openqa.selenium.Keys as Keys
 import org.apache.commons.lang.RandomStringUtils
 import com.kms.katalon.core.configuration.RunConfiguration
 
-WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen'), [('username') : findTestData('TestDataLogin').getValue(
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
             'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
 
 dashboard_link = WebUI.getUrl()

@@ -26,56 +26,56 @@ def data = findTestData('TestDataStudentRegistration')
 
 String firstName = data.getValue('first_name', 1)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(firstName, 'Registration/FirstName')
+CustomKeywords.'registration.student_registrationform.InputField'(firstName, 'Registration/FirstName')
 
 String lastName = data.getValue('last_name', 1)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(lastName, 'Registration/LastName')
+CustomKeywords.'registration.student_registrationform.InputField'(lastName, 'Registration/LastName')
 
 String email = data.getValue('email_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(email, 'Registration/UserEmail')
+CustomKeywords.'registration.student_registrationform.InputField'(email, 'Registration/UserEmail')
 
 String gender = data.getValue('gender_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.SelectGender'(gender)
+CustomKeywords.'registration.student_registrationform.SelectGender'(gender)
 
 String mobile = data.getValue('mobile_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(mobile, 'Registration/UserNumber')
+CustomKeywords.'registration.student_registrationform.InputField'(mobile, 'Registration/UserNumber')
 
 //String dateofBirth = data.getValue('dateofbirth_user', 1)
 //
-//CustomKeywords.'registration_form.student_registrationform.setDate'(dateofBirth, 'Registration/DateofBirth', 'dd MMM yyyy')
+//CustomKeywords.'registration.student_registrationform.setDate'(dateofBirth, 'Registration/DateofBirth', 'dd MMM yyyy')
 WebUI.click(findTestObject('Registration/Subjects'))
 
 String subjects = data.getValue('subjects_user', 5)
 
-CustomKeywords.'registration_form.student_registrationform.selectSubjects'(subjects, 'Registration/Subjects')
+CustomKeywords.'registration.student_registrationform.selectSubjects'(subjects, 'Registration/Subjects')
 
 String hobbies = data.getValue('hobbies_user', 4)
 
-CustomKeywords.'registration_form.student_registrationform.selectHobby'(hobbies)
+CustomKeywords.'registration.student_registrationform.selectHobby'(hobbies)
 
 def filePath = findTestData('TestDataStudentRegistration').getValue('picture_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.uploadFile'(findTestObject('Registration/UploadPicture'), filePath)
+CustomKeywords.'registration.student_registrationform.uploadFile'(findTestObject('Registration/UploadPicture'), filePath)
 
 String address = data.getValue('address_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.InputField'(address, 'Registration/CurrentAddress')
+CustomKeywords.'registration.student_registrationform.InputField'(address, 'Registration/CurrentAddress')
 
 String state = data.getValue('state_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.selectDropdown'(state, 'Registration/State')
+CustomKeywords.'registration.student_registrationform.selectDropdown'(state, 'Registration/State')
 
 String city = data.getValue('city_user', 1)
 
-CustomKeywords.'registration_form.student_registrationform.selectDropdown'(city, 'Registration/City')
+CustomKeywords.'registration.student_registrationform.selectDropdown'(city, 'Registration/City')
 
 WebUI.delay(3)
 
-CustomKeywords.'registration_form.student_registrationform.takeScreenshotWithTimestamp'()
+CustomKeywords.'registration.student_registrationform.takeScreenshotWithTimestamp'()
 
 WebUI.click(findTestObject('Registration/button_Submit'))
 
@@ -83,7 +83,7 @@ WebUI.verifyTextPresent('Thanks for submitting the form', true)
 
 WebUI.delay(3)
 
-CustomKeywords.'registration_form.student_registrationform.takeScreenshotWithTimestamp'()
+CustomKeywords.'registration.student_registrationform.takeScreenshotWithTimestamp'()
 
 WebUI.click(findTestObject('Registration/button_closeModal'))
 

@@ -90,6 +90,6 @@ WebUI.delay(5)
 // Ambil nama akun dari UI
 accountname = WebUI.getText(findTestObject('Dashboard/accountname'))
 // Menyimpan nama akun yang diambil ke dalam file teks
-CustomKeywords.'dashboard_getnamaakun.CreateFileAccountName.generatedFileAccount'(accountname)
+CustomKeywords.'dashboard.CreateFileAccountName.generatedFileAccount'(accountname)
 
 WebUI.closeBrowser()

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Contoh Hard Assertion</description>
+   <name>TC_001_Login_P_Hard</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>0f409f84-6415-4ef7-9f43-4c53f536cd49</testCaseGuid>
+</TestCaseEntity>

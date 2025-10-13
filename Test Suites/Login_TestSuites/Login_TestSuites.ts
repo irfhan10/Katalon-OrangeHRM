@@ -12,6 +12,25 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>fab26716-a2b0-4c4c-a6bb-333c6f523fef</testSuiteGuid>
    <testCaseLink>
+      <guid>5fd5a39f-e362-4b24-8626-e377942433fe</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Login/LoginScreen/LoginScreen_SoftAssert</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>aa8d7daf-692e-4fdb-a880-bf3c8d22e337</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>441191f9-5db3-416d-8f33-a85c6cf5d1a7</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
       <guid>85030147-8b3e-4f76-ba20-fd0da5cb9c35</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>

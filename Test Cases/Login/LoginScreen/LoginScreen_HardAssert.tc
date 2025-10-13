@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>LoginScreen_HardAssert</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d8aa2981-844e-46cd-82a4-6d413fac28ca</testCaseGuid>
+</TestCaseEntity>

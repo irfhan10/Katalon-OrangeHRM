@@ -6,12 +6,6 @@
    <comment></comment>
    <recordOption>OTHER</recordOption>
    <testCaseGuid>043a4814-7098-4a63-a31e-4ef439af6f7e</testCaseGuid>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>59506c1d-d006-4dbe-8c7a-16ecfb65dabe</variableId>
-   </variableLinks>
    <variable>
       <defaultValue>findTestData('TestDataLogin')</defaultValue>
       <description></description>
