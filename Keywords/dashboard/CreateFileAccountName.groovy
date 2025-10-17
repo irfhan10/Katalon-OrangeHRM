@@ -26,7 +26,7 @@ import java.io.File as File
 import java.text.SimpleDateFormat
 
 public class CreateFileAccountName {
-	
+
 	@Keyword
 	def generatedFileAccount(String nama) {
 		try {
@@ -53,7 +53,5 @@ public class CreateFileAccountName {
 			KeywordUtil.markFailed("Gagal membuat file: " + e.message)
 		}
 	}
-	
-	
 }
 

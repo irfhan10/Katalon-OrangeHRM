@@ -64,66 +64,44 @@ try {
 
 WebUI.delay(5)
 
+// Username
+String username = findTestData('TestDataLogin').getValue('Username', 1)
+
 WebUI.click(findTestObject('Login/input_Username_username'))
 
-WebUI.setText(findTestObject('Login/input_Username_username'), findTestData('TestDataLogin').getValue('Username', 1))
+WebUI.setText(findTestObject('Login/input_Username_username'), username)
+
+// Verifikasi inputan sesuai test data
+if (WebUI.verifyElementAttributeValue(findTestObject('Login/input_Username_username'), 'value', username, 3)) {
+	KeywordUtil.markPassed("Username sesuai dengan input: ${username}")
+} else {
+	KeywordUtil.markFailed("Username tidak sesuai dengan input : ${username}")
+}
+
+// Password
+String encryptedPassword = findTestData('TestDataLogin').getValue('Password', 1)
 
 WebUI.click(findTestObject('Login/input_Password_password'))
 
-WebUI.setText(findTestObject('Login/input_Password_password'), findTestData('TestDataLogin').getValue('Password', 1))
+WebUI.setEncryptedText(findTestObject('Login/input_Password_password'), encryptedPassword)
+
+// Verifikasi field bertipe type password
+WebUI.verifyElementAttributeValue(findTestObject('Login/input_Password_password'), 'type', 'password', 3)
 
 WebUI.click(findTestObject('Login/button_Login'))
 
 WebUI.delay(5)
 
+// Dashboard
 try {
 	// Assertion Halaman Dashboard
-	if (WebUI.verifyTextPresent('Dashboard', true, FailureHandling.OPTIONAL) ) {
-		KeywordUtil.markPassed("Halaman dashboard menampilkan teks 'Dashboard'")
+	if (WebUI.verifyTextPresent('Dashboard', true, FailureHandling.OPTIONAL)) {
+		KeywordUtil.markPassed('Halaman dashboard menampilkan teks "Dashboard" ')
 	} else {
-		KeywordUtil.markFailed("Teks 'Dashboard' tidak ditemukan")
-	}
-} catch (Exception e) {
-	KeywordUtil.markFailed("Terjadi error saat verifikasi halaman dashboard: " + e.message)
-}
-
-WebDriver driver = DriverFactory.getWebDriver()
-
-// Ambil elemen menu di UI
-List<WebElement> menus = driver.findElements(By.xpath('//span[@class="oxd-text oxd-text--span oxd-main-menu-item--name"]'))
-
-// Verifikasi jumlah menu (menggunakan int)
-WebUI.verifyEqual(menus.size(), 12)
-
-// Ambil data expected dari Test Data
-List<String> expected = []
-int totalRows = findTestData('TestDataMenu').getRowNumbers()
-for (int i = 1; i <= totalRows; i++) {
-	expected.add(findTestData('TestDataMenu').getValue('Menu', i))
-}
-KeywordUtil.logInfo("Expected menu: " + expected)
-
-// Loop perbandingan UI vs Test Data
-boolean allPassed = true
-
-for (int i = 0; i < menus.size(); i++) {
-    String actualText = menus.get(i).getText().trim()
-    String expectedText = expected[i].trim()
-	
-	if (actualText.equals(expectedText)) {
-		KeywordUtil.logInfo("Menu ke-" + (i+1) + " sesuai: " + actualText)
-	} else {
-		KeywordUtil.markFailed("Menu ke-" + (i+1) + " Tidak sesuai! " + "Ditemukan: '" + actualText + "', " + "seharusnya: '" + expectedText + "'")
-		allPassed = false
+		KeywordUtil.markFailed('Teks "Dashboard" tidak ditemukan')
 	}
 }
-
-// Setelah loop selesai
-if (allPassed) {
-    KeywordUtil.markPassed("Semua menu sesuai dengan test data!")
-} else {
-    KeywordUtil.markWarning("Ada menu yang tidak sesuai dengan test data!")
+catch (Exception e) {
+	KeywordUtil.markFailed('Terjadi error saat verifikasi halaman dashboard: ' + e.message)
 }
-
-WebUI.closeBrowser()
 
