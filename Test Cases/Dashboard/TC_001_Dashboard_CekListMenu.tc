@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Dashboard Menu</description>
+   <name>TC_001_Dashboard_CekListMenu</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a36efd12-c007-4e30-8f20-f1f213fbac93</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>47184a98-8dd1-49e3-9488-8475e3b4ec10</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c009808d-08fd-49f9-a538-59fead331878</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>47184a98-8dd1-49e3-9488-8475e3b4ec10</id>
+      <masked>false</masked>
+      <name>expected</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c009808d-08fd-49f9-a538-59fead331878</id>
+      <masked>false</masked>
+      <name>List</name>
+   </variable>
+</TestCaseEntity>
