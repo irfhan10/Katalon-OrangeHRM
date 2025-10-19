@@ -43,6 +43,12 @@ try {
 	} else {
 		KeywordUtil.markFailed("Teks 'Password' tidak ditemukan")
 	}
+	
+	if (WebUI.verifyElementAttributeValue(findTestObject('Login/input_Password'), 'type', 'password', 3, FailureHandling.CONTINUE_ON_FAILURE)) {
+		KeywordUtil.markPassed("Type 'Password' sesuai ")
+	} else {
+		KeywordUtil.markFailed("Type'Password' tidak disesuai")
+	}
 
 	if (WebUI.verifyElementText(findTestObject('Login/button_Login'), findTestData('TestDataLogin').getValue('Lable', 1), FailureHandling.CONTINUE_ON_FAILURE)) {
 		KeywordUtil.markPassed("Halaman login menampilkan teks 'Login' pada button")
@@ -56,13 +62,13 @@ try {
 		KeywordUtil.markFailed("Teks 'Forgot your password?' tidak ditemukan")
 	}
 
-	if (WebUI.verifyElementVisible(findTestObject('Login/input_Username_username'), FailureHandling.CONTINUE_ON_FAILURE)) {
+	if (WebUI.verifyElementVisible(findTestObject('Login/input_Username'), FailureHandling.CONTINUE_ON_FAILURE)) {
 		KeywordUtil.markPassed("Halaman login menampilkan field 'Username'")
 	} else {
 		KeywordUtil.markFailed("Field 'Username' tidak ditemukan")
 	}
 
-	if (WebUI.verifyElementVisible(findTestObject('Login/input_Password_password'), FailureHandling.CONTINUE_ON_FAILURE)) {
+	if (WebUI.verifyElementVisible(findTestObject('Login/input_Password'), FailureHandling.CONTINUE_ON_FAILURE)) {
 		KeywordUtil.markPassed("Halaman login menampilkan field 'Password'")
 	} else {
 		KeywordUtil.markFailed("Field 'Password' tidak ditemukan")

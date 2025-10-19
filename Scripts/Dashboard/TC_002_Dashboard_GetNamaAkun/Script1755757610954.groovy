@@ -22,7 +22,6 @@ import org.openqa.selenium.WebElement as WebElement
 import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
-
 WebUI.callTestCase(findTestCase('Dashboard/DashboardPage/VerifikasiElements'), [:], FailureHandling.STOP_ON_FAILURE)
 
 WebUI.delay(5)
@@ -31,7 +30,7 @@ WebUI.delay(5)
 accountname = WebUI.getText(findTestObject('Dashboard/accountname'))
 
 // Menyimpan nama akun yang diambil ke dalam file teks
-CustomKeywords.'dashboard.CreateFileAccountName.generatedFileAccount'(accountname)
+CustomKeywords.'dashboard.get_nama_akun.generatedFileAccount'(accountname)
 
 WebUI.closeBrowser()
 

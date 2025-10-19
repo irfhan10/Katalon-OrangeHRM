@@ -188,13 +188,13 @@ public class student_registrationform {
 
 
 	@Keyword
-	def takeScreenshotWithTimestamp() {
+	def takeScreenshot() {
 		// Get lokasi direktori
 		String projectDir = RunConfiguration.getProjectDir()
-		// Membuat timestamp sesuai format
+		// Buat timestamp
 		String timestamp = new Date().format("dd-MM-yyyy_HH-mm-ss")
 		// Menentukan lokasi folder
-		String path = projectDir + "/Screenshots/" + timestamp + ".png"
+		String path = projectDir + "/Screenshots/Registration/registration_page_" + timestamp + ".png"
 		// Mengambil screenshot
 		WebUI.takeScreenshot(path)
 		// Menampilkan log informasi di console

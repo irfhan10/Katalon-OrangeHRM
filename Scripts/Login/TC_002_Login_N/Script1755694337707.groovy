@@ -17,28 +17,30 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.configuration.RunConfiguration as RC
+import java.text.SimpleDateFormat as SimpleDateFormat
 
-//WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
-//            'Username', 2), ('password') : findTestData('TestDataLogin').getValue('Password', 2)], FailureHandling.STOP_ON_FAILURE)
 
 WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin'), ('password') : findTestData('TestDataLogin')],
 	FailureHandling.STOP_ON_FAILURE)
 
 // Input username & password
 try {
+	// Username
 	username = findTestData('TestDataLogin').getValue('Username', 2)
 	if (username != null && username.trim() != '') {
-		WebUI.click(findTestObject('Login/input_Username_username'))
-		WebUI.setText(findTestObject('Login/input_Username_username'), username)
+		WebUI.click(findTestObject('Login/input_Username'))
+		WebUI.setText(findTestObject('Login/input_Username'), username)
 		KeywordUtil.markPassed("Berhasil input Username")
 	} else {
 		KeywordUtil.markFailed("Gagal input Username")
 	}
 
-	password = findTestData('TestDataLogin').getValue('Password', 2)
-	if (password != null && password.trim() != '') {
-		WebUI.click(findTestObject('Login/input_Password_password'))
-		WebUI.setText(findTestObject('Login/input_Password_password'), password)
+	// Password
+	encryptedPassword = findTestData('TestDataLogin').getValue('Password', 2)
+	if (encryptedPassword != null && encryptedPassword.trim() != '') {
+		WebUI.click(findTestObject('Login/input_Password'))
+		WebUI.setEncryptedText(findTestObject('Login/input_Password'), encryptedPassword)
 		KeywordUtil.markPassed("Berhasil input Password")
 	} else {
 		KeywordUtil.markFailed("Gagal input Password")
@@ -60,7 +62,6 @@ try {
 		KeywordUtil.markFailed("Pesan error 'Invalid credentials' tidak tampil.")
 	}
 
-
 	if (WebUI.verifyElementText(findTestObject('Login/message_error_invalid_credentials'), findTestData('TestDataLogin').getValue('MessageError', 1))) {
 		KeywordUtil.markPassed("Pesan error sesuai dengan test data.")
 	} else {
@@ -73,7 +74,8 @@ try {
 
 WebUI.delay(3)
 
-WebUI.takeFullPageScreenshot()
+// Screenshoot
+CustomKeywords.'login.loginpage.screenshoot'()
 
 WebUI.closeBrowser()
 

@@ -31,14 +31,16 @@ try {
 	WebUI.verifyElementText(findTestObject('Login/username_label'), findTestData('TestDataLogin').getValue('Lable', 2))
 
 	WebUI.verifyElementText(findTestObject('Login/password_label'), findTestData('TestDataLogin').getValue('Lable', 3))
+	
+	WebUI.verifyElementAttributeValue(findTestObject('Login/input_Password'), 'type', 'password', 3)
 
 	WebUI.verifyElementText(findTestObject('Login/button_Login'), findTestData('TestDataLogin').getValue('Lable', 1))
 
-	WebUI.verifyElementText(findTestObject('Login/forgotpass_link'), findTestData('TestDataLogin').getValue('Lable', 5))	
+	WebUI.verifyElementText(findTestObject('Login/forgotpass_link'), findTestData('TestDataLogin').getValue('Lable', 4))
 
-	WebUI.verifyElementVisible(findTestObject('Login/input_Username_username'))
+	WebUI.verifyElementVisible(findTestObject('Login/input_Username'))
 
-	WebUI.verifyElementVisible(findTestObject('Login/input_Password_password'))
+	WebUI.verifyElementVisible(findTestObject('Login/input_Password'))
 	
 	WebUI.verifyElementVisible(findTestObject('Login/button_Login'))
 

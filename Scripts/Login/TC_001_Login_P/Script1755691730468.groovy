@@ -17,9 +17,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.configuration.RunConfiguration as RC
+import java.text.SimpleDateFormat as SimpleDateFormat
 
-// WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
-//            'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
 WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin')
         , ('password') : findTestData('TestDataLogin')], FailureHandling.STOP_ON_FAILURE)
 
@@ -29,24 +29,26 @@ WebUI.refresh()
 
 // Input username & password
 try {
+    //Username
     username = findTestData('TestDataLogin').getValue('Username', 1)
 
     if ((username != null) && (username.trim() != '')) {
-        WebUI.click(findTestObject('Login/input_Username_username'))
+        WebUI.click(findTestObject('Login/input_Username'))
 
-        WebUI.setText(findTestObject('Login/input_Username_username'), username)
+        WebUI.setText(findTestObject('Login/input_Username'), username)
 
         KeywordUtil.markPassed('Berhasil input Username')
     } else {
         KeywordUtil.markFailed('Gagal input Username')
     }
     
-    password = findTestData('TestDataLogin').getValue('Password', 1)
+    // Password
+    encryptedPassword = findTestData('TestDataLogin').getValue('Password', 1)
 
-    if ((password != null) && (password.trim() != '')) {
-        WebUI.click(findTestObject('Login/input_Password_password'))
+    if ((encryptedPassword != null) && (encryptedPassword.trim() != '')) {
+        WebUI.click(findTestObject('Login/input_Password'))
 
-        WebUI.setText(findTestObject('Login/input_Password_password'), password)
+        WebUI.setEncryptedText(findTestObject('Login/input_Password'), encryptedPassword)
 
         KeywordUtil.markPassed('Berhasil input Password')
     } else {
@@ -85,7 +87,8 @@ catch (Exception e) {
 
 WebUI.delay(3)
 
-WebUI.takeFullPageScreenshot()
+// Screenshoot
+CustomKeywords.'login.loginpage.screenshoot'()
 
 WebUI.closeBrowser()
 

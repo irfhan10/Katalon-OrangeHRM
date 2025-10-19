@@ -24,57 +24,53 @@ import java.text.SimpleDateFormat as SimpleDateFormat
 WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin')
         , ('password') : findTestData('TestDataLogin')], FailureHandling.STOP_ON_FAILURE)
 
+
+WebUI.delay(5)
+
 // Input username & password
 try {
-	// Username
-    username = findTestData('TestDataLogin').getValue('Username', 3)
-
-    if ((username != null) && (username.trim() != '')) {
-        WebUI.click(findTestObject('Login/input_Username'))
-        WebUI.setText(findTestObject('Login/input_Username'), username)
-        KeywordUtil.markPassed('Berhasil input Username')
-    } else {
-        KeywordUtil.markFailed('Gagal input Username')
-    }
-    
+	//Username
+	try {
+		WebUI.click(findTestObject('Login/input_Username'))
+		WebUI.setText(findTestObject('Login/input_Username'), Username)
+		KeywordUtil.markPassed("Berhasil input Username")
+	} catch (Exception e) {
+		KeywordUtil.markFailed("Gagal input Username")
+	}
+	
 	// Password
-    encryptedPassword = findTestData('TestDataLogin').getValue('Password', 3)
+	try {
+		WebUI.click(findTestObject('Login/input_Password'))
+		WebUI.setEncryptedText(findTestObject('Login/input_Password'), Password)
+		KeywordUtil.markPassed('Berhasil input Password')
+	} catch (Exception e) {
+		KeywordUtil.markFailed('Gagal input Password')
+	}
 
-    if ((encryptedPassword != null) && (encryptedPassword.trim() != '')) {
-        WebUI.click(findTestObject('Login/input_Password'))
-        WebUI.setEncryptedText(findTestObject('Login/input_Password'), encryptedPassword)
-        KeywordUtil.markPassed('Berhasil input Password')
-    } else {
-        KeywordUtil.markFailed('Gagal input Password')
-    }
 } catch (Exception e) {
-    KeywordUtil.markFailed('Terjadi error saat login: ' + e.message)
-} 
+	KeywordUtil.markFailed('Terjadi error saat login: ' + e.message)
+}
 
 WebUI.click(findTestObject('Login/button_Login'))
 
-WebUI.delay(3)
+WebUI.delay(5)
 
-// Verifikasi pesan error
-try {
-    if (WebUI.verifyElementPresent(findTestObject('Login/message_error_invalid_credentials'), 10)) {
-        KeywordUtil.markPassed('Berhasil menampilkan pesan error \'Invalid credentials\'.')
-    } else {
-        KeywordUtil.markFailed('Pesan error \'Invalid credentials\' tidak tampil.')
-    }
-    
-    if (WebUI.verifyElementText(findTestObject('Login/message_error_invalid_credentials'), findTestData('TestDataLogin').getValue(
-            'MessageError', 1))) {
-        KeywordUtil.markPassed('Pesan error sesuai dengan test data.')
-    } else {
-        KeywordUtil.markFailed('Pesan error tidak sesuai.')
-    }
+// Verifikasi hasil login berdasarkan nilai ExpectedResult
+switch (ExpectedResult) {
+	case 'Success':
+		WebUI.verifyElementText(findTestObject('Login/h6_textDashboard'), 'Dashboard')
+		break
+	case 'InvalidCredentials':
+		WebUI.verifyElementPresent(findTestObject('Login/message_error_invalid_credentials'), 5)
+		break
+	case 'Required':
+		WebUI.verifyElementPresent(findTestObject('Login/span_TextRequired'), 5)
+		break
+	default:
+		KeywordUtil.markFailed("Expected Result tidak dikenali : " + ExpectedResult)
 }
-catch (Exception e) {
-    KeywordUtil.markFailed('Terjadi error saat verifikasi: ' + e.message)
-} 
 
-WebUI.delay(3)
+WebUI.delay(5)
 
 // Screenshoot
 CustomKeywords.'login.loginpage.screenshoot'()

@@ -25,7 +25,7 @@ import org.apache.commons.io.FileUtils as FileUtils
 import java.io.File as File
 import java.text.SimpleDateFormat
 
-public class CreateFileAccountName {
+public class get_nama_akun {
 
 	@Keyword
 	def generatedFileAccount(String nama) {

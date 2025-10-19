@@ -17,9 +17,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.configuration.RunConfiguration as RC
+import java.text.SimpleDateFormat as SimpleDateFormat
 
-//WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
-//            'Username', 4), ('password') : findTestData('TestDataLogin').getValue('Password', 4)], FailureHandling.STOP_ON_FAILURE)
 
 WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin'), ('password') : findTestData('TestDataLogin')],
 	FailureHandling.STOP_ON_FAILURE)
@@ -28,13 +28,12 @@ WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('
 try {
 	username = findTestData('TestDataLogin').getValue('Username', 4)
 	if (username != null && username.trim() != '') {
-		WebUI.click(findTestObject('Login/input_Username_username'))
-		WebUI.setText(findTestObject('Login/input_Username_username'), username)
+		WebUI.click(findTestObject('Login/input_Username'))
+		WebUI.setText(findTestObject('Login/input_Username'), username)
 		KeywordUtil.markPassed("Berhasil input Username")
 	} else {
 		KeywordUtil.markFailed("Gagal input Username")
 	}
-
 } catch (Exception e) {
 	KeywordUtil.markFailed("Terjadi error saat login: " + e.message)
 }
@@ -63,7 +62,8 @@ try {
 
 WebUI.delay(3)
 
-WebUI.takeFullPageScreenshot()
+// Screenshoot
+CustomKeywords.'login.loginpage.screenshoot'()
 
 WebUI.closeBrowser()
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Get nama menu</description>
+   <name>TC_003_Dashboard_GetNamaMenu</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>00498730-c104-4f8e-9c8f-ee6e9fb768a5</testCaseGuid>
+</TestCaseEntity>

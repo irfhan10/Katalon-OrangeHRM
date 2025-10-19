@@ -34,13 +34,13 @@ try {
 		KeywordUtil.markFailed("Teks 'Login' tidak ditemukan")
 	}
 
-	if (WebUI.verifyElementPresent(findTestObject('Login/input_Username_username'), 3, FailureHandling.OPTIONAL)) {
+	if (WebUI.verifyElementPresent(findTestObject('Login/input_Username'), 3, FailureHandling.OPTIONAL)) {
 		KeywordUtil.markPassed("Field Username tampil dihalaman login")
 	} else {
 		KeywordUtil.markFailed("Field Username tidak ditemukan")
 	}
 
-	if (WebUI.verifyElementPresent(findTestObject('Login/input_Password_password'), 3, FailureHandling.OPTIONAL)) {
+	if (WebUI.verifyElementPresent(findTestObject('Login/input_Password'), 3, FailureHandling.OPTIONAL)) {
 		KeywordUtil.markPassed("Field Password tampil dihalaman login")
 	} else {
 		KeywordUtil.markFailed("Field Password tidak ditemukan")
@@ -67,12 +67,12 @@ WebUI.delay(5)
 // Username
 String username = findTestData('TestDataLogin').getValue('Username', 1)
 
-WebUI.click(findTestObject('Login/input_Username_username'))
+WebUI.click(findTestObject('Login/input_Username'))
 
-WebUI.setText(findTestObject('Login/input_Username_username'), username)
+WebUI.setText(findTestObject('Login/input_Username'), username)
 
 // Verifikasi inputan sesuai test data
-if (WebUI.verifyElementAttributeValue(findTestObject('Login/input_Username_username'), 'value', username, 3)) {
+if (WebUI.verifyElementAttributeValue(findTestObject('Login/input_Username'), 'value', username, 3)) {
 	KeywordUtil.markPassed("Username sesuai dengan input: ${username}")
 } else {
 	KeywordUtil.markFailed("Username tidak sesuai dengan input : ${username}")
@@ -81,12 +81,12 @@ if (WebUI.verifyElementAttributeValue(findTestObject('Login/input_Username_usern
 // Password
 String encryptedPassword = findTestData('TestDataLogin').getValue('Password', 1)
 
-WebUI.click(findTestObject('Login/input_Password_password'))
-
-WebUI.setEncryptedText(findTestObject('Login/input_Password_password'), encryptedPassword)
-
 // Verifikasi field bertipe type password
-WebUI.verifyElementAttributeValue(findTestObject('Login/input_Password_password'), 'type', 'password', 3)
+WebUI.verifyElementAttributeValue(findTestObject('Login/input_Password'), 'type', 'password', 3)
+
+WebUI.click(findTestObject('Login/input_Password'))
+
+WebUI.setEncryptedText(findTestObject('Login/input_Password'), encryptedPassword)
 
 WebUI.click(findTestObject('Login/button_Login'))
 
