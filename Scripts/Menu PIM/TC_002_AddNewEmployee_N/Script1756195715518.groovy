@@ -18,9 +18,12 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import org.apache.commons.lang.RandomStringUtils as RandomStringUtils
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.configuration.RunConfiguration as RC
 
-WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
-            'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
+
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_HardAssert'), [:], FailureHandling.STOP_ON_FAILURE)
 
 dashboard_link = WebUI.getUrl()
 
@@ -28,20 +31,28 @@ WebUI.verifyMatch(dashboard_link, findTestData('TestDataLogin').getValue('url', 
 
 WebUI.delay(3)
 
-WebUI.takeFullPageScreenshot()
+String projectDir = RC.getProjectDir()
+String timestamp = new Date().format("dd-MM-yyyy_HH-mm-ss")
+
+String screenshotPIM = projectDir + "/Screenshots/Menu PIM/TC_002_Halaman_Dashboard_" + timestamp + ".png"
+WebUI.takeFullPageScreenshot(screenshotPIM)
 
 WebUI.delay(3)
 
 WebUI.click(findTestObject('Menu PIM/click_menu_PIM'))
 
+WebUI.verifyTextPresent('PIM', false)
+
 WebUI.delay(3)
 
 WebUI.click(findTestObject('Menu PIM/button_Add'))
 
+WebUI.verifyTextPresent('Add Employee', false)
+
 WebUI.delay(3)
 
 // Generate username unik dengan timestamp
-String randomFirstname = 'First' + System.currentTimeMillis()
+// String randomFirstname = 'First' + System.currentTimeMillis()
 
 String randomMiddlename = 'Middle' + System.currentTimeMillis()
 
@@ -49,34 +60,45 @@ String randomLastname = 'Last' + System.currentTimeMillis()
 
 String randomEmployeeId = RandomStringUtils.randomNumeric(2)
 
-WebUI.click(findTestObject('Menu PIM/input_Employee Full Name_firstName'))
+WebUI.verifyElementPresent(findTestObject('Menu PIM/input_FirstName'), 3)
 
-WebUI.setText(findTestObject('Menu PIM/input_Employee Full Name_firstName'), randomFirstname)
+WebUI.click(findTestObject('Menu PIM/input_FirstName'))
 
-WebUI.click(findTestObject('Menu PIM/input_Employee Full Name_middleName'))
+WebUI.setText(findTestObject('Menu PIM/input_FirstName'), 'CancelTest')
 
-WebUI.setText(findTestObject('Menu PIM/input_Employee Full Name_middleName'), randomMiddlename)
+WebUI.verifyElementPresent(findTestObject('Menu PIM/input_MiddleName'), 3)
 
-WebUI.click(findTestObject('Menu PIM/input_Employee Full Name_lastName'))
+WebUI.click(findTestObject('Menu PIM/input_MiddleName'))
 
-WebUI.setText(findTestObject('Menu PIM/input_Employee Full Name_lastName'), randomLastname)
+WebUI.setText(findTestObject('Menu PIM/input_MiddleName'), randomMiddlename)
 
-WebUI.click(findTestObject('Menu PIM/input_Employee Id'))
+WebUI.verifyElementPresent(findTestObject('Menu PIM/input_LastName'), 3)
 
-WebUI.setText(findTestObject('Menu PIM/input_Employee Id'), randomEmployeeId)
+WebUI.click(findTestObject('Menu PIM/input_LastName'))
+
+WebUI.setText(findTestObject('Menu PIM/input_LastName'), randomLastname)
+
+WebUI.verifyElementPresent(findTestObject('Menu PIM/input_EmployeeId'), 3)
+
+WebUI.click(findTestObject('Menu PIM/input_EmployeeId'))
+
+WebUI.setText(findTestObject('Menu PIM/input_EmployeeId'), randomEmployeeId)
 
 WebUI.delay(3)
 
-String filePath = RunConfiguration.getProjectDir() + '/Data Files/gambar1.jpg'
+String filePath = RunConfiguration.getProjectDir() + '/Test Data/gambar1.jpg'
+
+WebUI.verifyElementPresent(findTestObject('Menu PIM/button_AddEmployeeProfile'), 3)
 
 WebUI.uploadFile(findTestObject('Menu PIM/button_AddEmployeeProfile'), filePath)
 
-WebUI.delay(3)
+WebUI.delay(5)
 
-WebUI.takeFullPageScreenshot()
+WebUI.verifyElementPresent(findTestObject('Menu PIM/button_Cancel'), 3)
 
 WebUI.click(findTestObject('Menu PIM/button_Cancel'))
 
-WebUI.delay(15)
+WebUI.delay(5)
 
 WebUI.closeBrowser()
+

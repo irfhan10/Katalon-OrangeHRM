@@ -95,7 +95,7 @@ WebUI.delay(5)
 // Dashboard
 try {
 	// Assertion Halaman Dashboard
-	if (WebUI.verifyTextPresent('Dashboard', true, FailureHandling.OPTIONAL)) {
+	if (WebUI.verifyTextPresent('Dashboard', false, FailureHandling.OPTIONAL)) {
 		KeywordUtil.markPassed('Halaman dashboard menampilkan teks "Dashboard" ')
 	} else {
 		KeywordUtil.markFailed('Teks "Dashboard" tidak ditemukan')

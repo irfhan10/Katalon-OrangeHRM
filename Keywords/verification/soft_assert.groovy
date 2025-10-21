@@ -23,7 +23,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import internal.GlobalVariable
 
 public class soft_assert {
-	
+
 	// Soft Verify Element Text, verifikasi teks dari element tanpa menghentikan test case
 	@Keyword
 	def verifyElementText(TestObject to, String expectedText) {
@@ -35,7 +35,7 @@ public class soft_assert {
 		}
 	}
 
-	
+
 	// Soft Verify Element Visible, cek element di halaman
 	@Keyword
 	def verifyElementVisible(TestObject to) {
@@ -47,7 +47,7 @@ public class soft_assert {
 		}
 	}
 
-	
+
 	// Soft Verify Match Text, bandingkan dua teks (actual dan expected)
 	@Keyword
 	def verifyMatchText(String actual, String expected) {

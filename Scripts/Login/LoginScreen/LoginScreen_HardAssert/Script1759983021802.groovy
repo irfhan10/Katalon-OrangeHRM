@@ -58,4 +58,27 @@ try {
 	KeywordUtil.markFailed("Terjadi error saat verifikasi halaman login: " + e.message)
 }
 
+//Username
+username = findTestData('TestDataLogin').getValue('Username', 1)
+
+WebUI.click(findTestObject('Login/input_Username'))
+
+WebUI.setText(findTestObject('Login/input_Username'), username)
+
+// Password
+encryptedPassword = findTestData('TestDataLogin').getValue('Password', 1)
+
+WebUI.click(findTestObject('Login/input_Password'))
+
+WebUI.setEncryptedText(findTestObject('Login/input_Password'), encryptedPassword)
+
+WebUI.click(findTestObject('Login/button_Login'))
+
+WebUI.delay(3)
+
+// Verifikasi URL
+String dashboard_link = WebUI.getUrl()
+
+WebUI.verifyMatch(dashboard_link, 'https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index', false)
+
 WebUI.delay(3)

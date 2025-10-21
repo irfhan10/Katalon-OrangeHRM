@@ -18,8 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
-WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_SoftAssert'), [('username') : findTestData('TestDataLogin').getValue(
-            'Username', 1), ('password') : findTestData('TestDataLogin').getValue('Password', 1)], FailureHandling.STOP_ON_FAILURE)
+WebUI.callTestCase(findTestCase('Login/LoginScreen/LoginScreen_HardAssert'), [:], FailureHandling.STOP_ON_FAILURE)
 
 WebUI.delay(3)
 
@@ -27,48 +26,66 @@ WebUI.click(findTestObject('Menu Admin/menu_Admin'))
 
 WebUI.delay(3)
 
+WebUI.verifyTextPresent('User Management', false)
+
+WebUI.verifyElementPresent(findTestObject('Menu Admin/input_Username'), 3)
+
 WebUI.click(findTestObject('Menu Admin/input_Username'))
 
-WebUI.setText(findTestObject('Menu Admin/input_Username'), 'hatzz')
+WebUI.setText(findTestObject('Menu Admin/input_Username'), 'Testing')
 
 WebUI.delay(3)
+
+WebUI.verifyElementPresent(findTestObject('Menu Admin/button_Search'), 3)
 
 WebUI.click(findTestObject('Menu Admin/button_Search'))
 
 WebUI.delay(3)
 
+WebUI.verifyElementPresent(findTestObject('Menu Admin/button_Edit'), 3)
+
 WebUI.click(findTestObject('Menu Admin/button_Edit'))
 
 WebUI.delay(3)
 
-notchecked = WebUI.verifyElementNotChecked(findTestObject('Menu Admin/checkbox_Yes'), 0)
+WebUI.verifyTextPresent('Admin', false)
 
-if (notchecked == false) {
-    WebUI.click(findTestObject('Menu Admin/checkbox_Yes'))
+try {
+	
+	notchecked = WebUI.verifyElementNotChecked(findTestObject('Menu Admin/checkbox_Yes'), 0)
 
-    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Password'))
+	if (notchecked == false) {
+	    WebUI.click(findTestObject('Menu Admin/checkbox_Yes'))
+	
+	    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Password'))
+	
+	    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Confirm_Password'))
+	
+	    WebUI.click(findTestObject('Menu Admin/input_Password'))
+	
+	    WebUI.setText(findTestObject('Menu Admin/input_Password'), 'admin123')
+	
+	    WebUI.click(findTestObject('Menu Admin/input_Confirm_Password'))
+	
+	    WebUI.setText(findTestObject('Menu Admin/input_Confirm_Password'), 'admin123')
+	
+	    WebUI.delay(3)
+	
+		WebUI.verifyElementPresent(findTestObject('Menu Admin/button_Save'), 3)
+		
+	    WebUI.click(findTestObject('Menu Admin/button_Save'))
+	
+	    WebUI.delay(3)
+	} else {
+	    WebUI.click(findTestObject('Menu Admin/button_Save'))
+	
+	    WebUI.delay(10)
+	}
 
-    WebUI.verifyElementVisible(findTestObject('Menu Admin/input_Confirm Password'))
-
-    WebUI.click(findTestObject('Menu Admin/input_Password'))
-
-    WebUI.setText(findTestObject('Menu Admin/input_Password'), 'admin123')
-
-    WebUI.click(findTestObject('Menu Admin/input_Confirm Password'))
-
-    WebUI.setText(findTestObject('Menu Admin/input_Confirm Password'), 'admin123')
-
-    WebUI.delay(3)
-
-    WebUI.click(findTestObject('Menu Admin/button_Save'))
-
-    WebUI.delay(3)
-} else {
-    WebUI.click(findTestObject('Menu Admin/button_Save'))
-
-    WebUI.delay(10)
+} catch (Exception e) {
+	KeywordUtil.markFailed("Terjadi Error Pada Halaman. " + e.message )
 }
-
+	
 WebUI.takeFullPageScreenshot()
 
 WebUI.closeBrowser()

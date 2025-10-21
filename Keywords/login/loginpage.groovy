@@ -25,21 +25,21 @@ import java.text.SimpleDateFormat
 
 
 public class loginpage {
-	
+
 	@Keyword
 	def screenshoot () {
 		// Ambil folder project
 		String projectDir = RC.getProjectDir()
-		
+
 		// Buat timestamp
 		String timestamp = new Date().format("dd-MM-yyyy_HH-mm-ss")
-		
+
 		// Buat path penyimpanan
 		String screenshotPath = projectDir + "/Screenshots/Login/login_page_" + timestamp + ".png"
-		
+
 		// Ambil screenshot full page
 		WebUI.takeFullPageScreenshot(screenshotPath)
-		
+
 		// Tampilkan log informasi di console
 		println("Screenshot disimpan di: " + screenshotPath)
 	}

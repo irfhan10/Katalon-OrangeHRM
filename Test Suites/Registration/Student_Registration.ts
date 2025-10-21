@@ -15,7 +15,7 @@
       <guid>d3926da8-4b66-40fe-97e9-d3a2236f29aa</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Registration/TC_002_Registration_P</testCaseId>
+      <testCaseId>Test Cases/Registration/TC_002_Registration_DataBinding</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>bc8f7897-099d-4542-8c4f-37ee9e2c49fe</id>
