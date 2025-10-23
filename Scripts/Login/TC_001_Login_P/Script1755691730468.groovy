@@ -29,7 +29,7 @@ WebUI.refresh()
 
 // Input username & password
 try {
-    //Username
+    // Username
     username = findTestData('TestDataLogin').getValue('Username', 1)
 
     if ((username != null) && (username.trim() != '')) {
